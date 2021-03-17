@@ -1,4 +1,4 @@
-"""django_test URL Configuration
+"""URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -15,15 +15,17 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django_test.shop.views import del_order, get_order
+
+from shop.views import del_order, get_order, list_order
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('del_order/<int:id_order>/', del_order),
     path('get_order/<int:id_order>/', get_order),
+    path('list_order/', list_order)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
